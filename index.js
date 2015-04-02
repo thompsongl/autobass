@@ -45,9 +45,9 @@ module.exports = function() {
     });
 
     if (self.layout) {
-      this.defaultLayout = read(path.join(self.source, self.layout));
+      this.defaultLayout = path.join(self.source, self.layout);
     } else {
-      this.defaultLayout = read(path.join(__dirname, './layouts/default.html'));
+      this.defaultLayout = path.join(__dirname, './layouts/default.html');
     }
 
     this.layout = this.defaultLayout;
@@ -72,4 +72,3 @@ module.exports = function() {
   return this;
 
 };
-
