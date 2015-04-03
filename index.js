@@ -2,6 +2,7 @@
 var _ = require('lodash');
 var fs = require('fs');
 var path = require('path');
+var Twig = require('Twig');
 
 var read = require('./lib/read');
 var extend = require('./lib/extend');
@@ -54,9 +55,11 @@ module.exports = function() {
 
     _.forIn(helpers, function(val, key) {
       this[key] = val;
+      Twig.extendFilter(key, val);
     });
     _.forIn(this.helpers, function(val, key) {
       this[key] = val;
+      Twig.extendFilter(key, val);
     });
 
     if (this.modules) {
